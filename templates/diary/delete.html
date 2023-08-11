@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Delete page
+{% endblock title %}
+
+  {% block content %}
+  
+  <section id="app" class="my-3">
+    <div class="container my-3">
+      <div class="row">
+        <div class="col-md-5 mx-auto">
+          <div class="card">        
+           <div class="card-header">Delete item</div>
+             <div class="card-body">
+            <p class="lead">Are you sure you want to delete {{item.title}} </p>
+             </div>
+               <div class="card-footer d-flex justify-content-between">
+                <form action="{% url 'delete' item.id %}" method="post">
+                  {% csrf_token%}
+                  <button type="submit" class="btn btn-danger">Yes</button>
+                 </form>
+                <a href="{% url 'index' %}" class="btn btn-primary">No</a>
+               </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+    
+  {% endblock content %}
